@@ -9,5 +9,12 @@ namespace heist
 
         public int SkillLevel { get; set; }
         public decimal CourageFactor { get; set; }
+
+        // public Heister(string name, int skillLevel, decimal courageFactor)
+        // {
+        //     Name = name;
+        //     SkillLevel = skillLevel;
+        //     CourageFactor = courageFactor;
+        // }
     }
 }
