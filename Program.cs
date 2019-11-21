@@ -77,15 +77,16 @@ namespace heist
 
             for (int i = 0; i < numberOfRuns; i++)
             {
-                Random luckRating = new Random();
-                bankDifficulty += luckRating.Next(-10, 11);
+                Random luckGen = new Random();
+                int luckRating = luckGen.Next(-10, 11);
+                int officalBankRating = bankDifficulty + luckRating;
 
                 Console.WriteLine();
                 Console.WriteLine($"Team Skill> {teamSkill}");
-                Console.WriteLine($"Bank Skill> {bankDifficulty}");
+                Console.WriteLine($"Bank Skill> {officalBankRating}");
                 Console.WriteLine();
 
-                if (teamSkill >= bankDifficulty)
+                if (teamSkill >= officalBankRating)
                 {
                     Console.WriteLine("Atta Boy!");
                     heistReport.SuccessCount++;
