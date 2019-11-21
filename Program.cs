@@ -25,7 +25,7 @@ namespace heist
                 {
                     skillLevel = int.Parse(skillLevelString);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Console.WriteLine($"{skillLevelString} is not a valid skill level. Using a default value of 10");
                     skillLevel = 10;
@@ -39,7 +39,7 @@ namespace heist
                 {
                     courageFactor = decimal.Parse(courageFactorString);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Console.WriteLine($"{courageFactorString} is not a valid courage factor. Using a default value of 1.0");
                     courageFactor = 1.0M;
@@ -57,10 +57,14 @@ namespace heist
                 name = Console.ReadLine();
             }
 
+            Console.WriteLine($"{Robbers.Count} Crew Member's total!");
+            Console.WriteLine();
+            Console.WriteLine(" <Crew Members> ");
+            Console.WriteLine();
+
             foreach (Heister member in Robbers)
             {
-                Console.WriteLine(" <Crew Members> ");
-                Console.WriteLine($"Name: {member.Name}");
+                Console.WriteLine($"{member.Name}");
                 Console.WriteLine($"Skill Level: {member.SkillLevel}");
                 Console.WriteLine($"Courage Factor: {member.CourageFactor}");
                 Console.WriteLine();
