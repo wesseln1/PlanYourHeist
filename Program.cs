@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace heist
 {
@@ -56,19 +57,67 @@ namespace heist
                 Console.WriteLine("New Crew Member");
                 name = Console.ReadLine();
             }
-
             Console.WriteLine($"{Robbers.Count} Crew Member's total!");
             Console.WriteLine();
-            Console.WriteLine(" <Crew Members> ");
+
+            Console.WriteLine("How many times would you like to run this?");
+            int numberOfRuns = int.Parse(Console.ReadLine());
             Console.WriteLine();
 
+            int teamSkill = 0;
             foreach (Heister member in Robbers)
             {
-                Console.WriteLine($"{member.Name}");
-                Console.WriteLine($"Skill Level: {member.SkillLevel}");
-                Console.WriteLine($"Courage Factor: {member.CourageFactor}");
-                Console.WriteLine();
+                teamSkill += member.SkillLevel;
             }
+
+            Report heistReport = new Report();
+
+            for (int i = 0; i < numberOfRuns; i++)
+            {
+                int bankDifficulty = 100;
+                Random luckRating = new Random();
+                bankDifficulty += luckRating.Next(-10, 11);
+
+                Console.WriteLine();
+                Console.WriteLine($"Team Skill> {teamSkill}");
+                Console.WriteLine($"Bank Skill> {bankDifficulty}");
+                Console.WriteLine();
+
+                if (teamSkill >= bankDifficulty)
+                {
+                    Console.WriteLine("Atta Boy!");
+                    heistReport.SuccessCount++;
+                }
+                else
+                {
+                    Console.WriteLine("Going to jail now Boy!");
+                    heistReport.FailureCount++;
+                }
+            }
+
+            heistReport.ShowReport();
+
+            // Console.WriteLine(" <Crew Members> ");
+            // Console.WriteLine();
+            // foreach (Heister member in Robbers)
+            // {
+            //     Console.WriteLine($"{member.Name}");
+            //     Console.WriteLine($"Skill Level: {member.SkillLevel}");
+            //     Console.WriteLine($"Courage Factor: {member.CourageFactor}");
+            //     Console.WriteLine();
+            // }
+
+            //First way i did it, but cleaned it up
+
+            // List<int> robbersSkillLevels = new List<int>();
+            // foreach (var robber in Robbers)
+            // {
+            //     robbersSkillLevels.Add(robber.SkillLevel);
+            // }
+
+            // int totalRobberSkillLevel = robbersSkillLevels.Sum();
+            // Console.WriteLine(totalRobberSkillLevel);
+
         }
     }
 }
