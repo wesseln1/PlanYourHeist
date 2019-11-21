@@ -10,6 +10,9 @@ namespace heist
         {
             Console.WriteLine("Plan your heist!");
             Console.WriteLine();
+            Console.WriteLine("Base Difficulty of Bank>");
+            int bankDifficulty = int.Parse(Console.ReadLine());
+            Console.WriteLine();
 
             List<Heister> Robbers = new List<Heister>();
 
@@ -74,7 +77,6 @@ namespace heist
 
             for (int i = 0; i < numberOfRuns; i++)
             {
-                int bankDifficulty = 100;
                 Random luckRating = new Random();
                 bankDifficulty += luckRating.Next(-10, 11);
 
